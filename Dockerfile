@@ -9,11 +9,12 @@ RUN apt-get update \
     && rm -r /var/lib/apt/lists/*
 
 ENV RUNNER=mindoc
-RUN useradd -m ${RUNNER}
+RUN useradd -m -d /data ${RUNNER}
 
-WORKDIR /home/${RUNNER}
+WORKDIR /data
 
-ENV MINDOC_VERSION=1.0.2
+ARG MINDOC_VERSION=1.0.2
+ENV MINDOC_VERSION=${MINDOC_VERSION}
 RUN runuser -u ${RUNNER} -- wget https://github.com/lifei6671/mindoc/releases/download/v${MINDOC_VERSION}/mindoc_linux_amd64.zip \
     && runuser -u ${RUNNER} -- unzip mindoc_linux_amd64.zip \
     && rm -rf mindoc_linux_amd64.zip

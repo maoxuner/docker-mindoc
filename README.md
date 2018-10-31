@@ -17,7 +17,7 @@
 ## 目录结构
 
 ```
-/home/mindoc
+/data
 |-- conf/
 |-- database/
 |-- lib/
@@ -32,12 +32,12 @@
 
 MinDoc主程序以用户`mindoc`来运行，用户UID和GID都是`1000`。可分别使用`RUNNER_UID`和`RUNNER_GID`环境变量来设置用户`mindoc`的UID和GID。
 
-`/home/mindoc`下所有文件的拥有者和用户组都是`mindoc`。如果要挂载宿主机目录到该路径下，请保证容器内外用户权限一致。
+`/data`下所有文件的拥有者和用户组都是`mindoc`。如果要挂载宿主机目录到该路径下，请保证容器内外用户权限一致。
 
 ## 永久化存储
 
 1. 数据库
-   - 如果使用默认的sqlite，将`/home/mindoc/database`挂载到宿主机
+   - 如果使用默认的sqlite，将`/data/database`挂载到宿主机
    - 使用外部的mysql数据库（需要做好mysql数据库的永久化存储）
-2. 将文件上传目录`/home/mindoc/uploads`挂载到宿主机
-3. 将运行信息目录`/home/mindoc/runtime`挂载到宿主机（包含mindoc运行日志等信息，可选）
+2. 将文件上传目录`/data/uploads`挂载到宿主机
+3. 将运行信息目录`/data/runtime`挂载到宿主机（包含mindoc运行日志等信息，可选）
